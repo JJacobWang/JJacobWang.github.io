@@ -16,7 +16,7 @@ function setLanguage(lang) {
   buttons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.lang === chosen)));
   document.title = chosen === 'zh' ? '王金峰 | 医疗人工智能研究' : 'Jinfeng Wang | Medical AI Research';
   updateThemeLabel();
-  try { localStorage.setItem('preferred-language', chosen); } catch (_) {}
+  try { localStorage.setItem('preferred-language-v2', chosen); } catch (_) {}
 }
 function setTheme(theme) {
   document.documentElement.dataset.theme = theme === 'dark' ? 'dark' : 'light';
@@ -27,6 +27,6 @@ buttons.forEach(button => button.addEventListener('click', () => setLanguage(but
 themeToggle.addEventListener('click', () => setTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'));
 let preference = 'en';
 let theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-try { preference = localStorage.getItem('preferred-language') || 'en'; theme = localStorage.getItem('preferred-theme') || theme; } catch (_) {}
+try { preference = localStorage.getItem('preferred-language-v2') || 'en'; theme = localStorage.getItem('preferred-theme') || theme; } catch (_) {}
 setTheme(theme);
 setLanguage(preference);
